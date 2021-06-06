@@ -1,0 +1,12 @@
+SELECT per.person_id, \n" +
+            "    per.gender, \n" +
+            "    cat.cid,\n" +
+            "\tcat.category_name,\n" +
+            "\tpro.product_name \n" +
+            "FROM persons AS per\n" +
+            "    LEFT JOIN person_categories AS pcat\n" +
+            "        ON per.person_id = pcat.person_id\n" +
+            "    LEFT JOIN categories AS cat\n" +
+            "        ON pcat.cid = cat.cid\n" +
+            "\tLEFT JOIN product AS pro \n" +
+            "\t\tON pcat.cid = pro.category_id

@@ -1,0 +1,93 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500&display=swap");
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/*---Variable declarations---*/
+:root{
+    --input-color: #565e6f;
+    --input-border: #CDD9ED;
+    /*--linear-gradient:linear-gradient(90deg, #050C3F -5.08%, rgba(185, 27, 27, 0.918) 105.08%);*/
+    --linear-gradient:linear-gradient(90deg, #050C3F -5.08%, #9A3E3E 105.08%);
+    --font-color: #827B7B;
+
+}
+
+
+body {
+    background-color: rgb(234, 237, 237) !important;
+    font-family: "Cormorant Garamond", serif;
+    line-height: 1.4;
+    font-size: 1.2em;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+.header{
+    background:linear-gradient(252.57deg, rgba(2, 15, 84, 0.89) 8.82%, rgba(84, 2, 17, 0.6319) 54.97%, rgba(2, 15, 84, 0.6141) 75.63%, rgba(98, 0, 0, 0.5963) 95.87%);
+}
+
+.product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    max-height: 400px;
+    min-width: 100px;
+    margin: 10px;
+    padding: 20px;
+    width: 100%;
+    background-color: white;
+    z-index: 1;
+}
+
+.product__info {
+     height: 100px;
+     margin-bottom: 40px;
+}
+
+.product__price{
+     margin-top: 5px;
+ }
+
+.product__rating{
+     display: flex ;
+     color: #cd9042;
+ }
+
+.product > img{
+      max-height: 200px;
+      width: 100%;
+      object-fit: contain;
+      margin-bottom: 15px;
+  }
+
+.product > button {
+      background-color: #f0c14b;
+      border: 1px solid;
+      border-color: #a88734 #9c7e31 #846a29;
+  }
+
+
+.home{
+    max-width: 1500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.home__backgroundimage{
+     width: 100%;
+     mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
+     z-index: -1;
+     margin-bottom: -150px;
+ }
+
+.home__row{
+     display: flex;
+     z-index: 1;
+     margin-left: 5px;
+     margin-right: 5px  ;
+}
