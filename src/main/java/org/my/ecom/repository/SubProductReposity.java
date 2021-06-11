@@ -11,4 +11,5 @@ import java.util.List;
 public interface SubProductReposity extends JpaRepository<SubProduct, Long> {
 
     List<SubProduct> findByPid(Long id);
+    void deleteByPid(Long id);
 }

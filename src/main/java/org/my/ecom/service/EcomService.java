@@ -32,6 +32,13 @@ public class EcomService {
         Set<SubProduct> subProducts = product.getSubProducts();
         for(SubProduct subProduct: subProducts){
             subProduct.setPid(entProduct);
+            if(subProduct.getChildSubProduct() != null && !subProduct.getChildSubProduct().isEmpty()){
+                for(SubProduct childSubProduct: subProduct.getChildSubProduct()){
+                    childSubProduct.setPid(entProduct);
+                    childSubProduct.setParentSubProduct(subProduct);
+                }
+            }
+
         }
         return subProductReposity.saveAll(subProducts);
     }
@@ -51,13 +58,17 @@ public class EcomService {
 
     public Product findByIdProduct(Long id) {
         Optional<org.my.ecom.entities.Product> product = productRepository.findById(id);
-        return productMapper.entityToUi(product.get());
+        return productMapper.entityToUi(product.orElseGet(() -> null));
     }
 
     public void removeProduct(Long id) {
         Product product = findByIdProduct(id);
         org.my.ecom.entities.Product enProduct = productMapper.uiToEntity(product);
         productRepository.delete(enProduct);
+        List<SubProduct> subProduct = subProductReposity.findByPid(id);
+        if(subProduct !=null && !subProduct.isEmpty()){
+            subProductReposity.deleteAll(subProduct);
+        }
     }
 
     public Set<Product> saveProducts(List<Product> products) {

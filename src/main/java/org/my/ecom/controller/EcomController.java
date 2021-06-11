@@ -39,7 +39,7 @@ public class EcomController {
         return new ResponseEntity<>(allProduct, HttpStatus.OK);
     }
 
-    @GetMapping("{/productId}")
+    @GetMapping("/{productId}")
     public ResponseEntity<Product> getProductById(@PathVariable("productId") Long id){
         Product product1 = ecomService.findByIdProduct(id);
         return new ResponseEntity<>(product1, HttpStatus.OK);
@@ -54,17 +54,17 @@ public class EcomController {
     @PostMapping
     public ResponseEntity<Set<Product>> saveProducts(@RequestBody List<Product> product){
         Set<Product> product1 = ecomService.saveProducts(product);
-        return new ResponseEntity<>(product1, HttpStatus.OK);
+        return new ResponseEntity<>(product1, HttpStatus.CREATED);
     }
 
 
-    @PutMapping("{/productId}")
+    @PutMapping("/{productId}")
     public ResponseEntity<Product> updateProductsDetails(@RequestBody Product product){
         Product product1 = ecomService.updateProduct(product);
         return new ResponseEntity<>(product1, HttpStatus.OK);
     }
 
-    @DeleteMapping("{/productId}")
+    @DeleteMapping("/{productId}")
     public ResponseEntity<Void> removeProductsDetails(@PathVariable("productId") Long id){
          ecomService.removeProduct(id);
         return new ResponseEntity<>(HttpStatus.OK);

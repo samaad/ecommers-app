@@ -1,19 +1,9 @@
 package org.my.ecom.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
-import java.util.HashSet;
 import java.util.Set;
 
-@Data
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
 @Table(name = "subproduct")
 public class SubProduct {
 
@@ -24,7 +14,7 @@ public class SubProduct {
     private String description;
     private String productImg;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne
     @JoinColumn(name = "parentSubProduct_id")
     public SubProduct parentSubProduct;
 
@@ -32,4 +22,70 @@ public class SubProduct {
     public Set<SubProduct> childSubProduct;
 
     private Long pid;
+
+    public SubProduct() {
+    }
+
+    public SubProduct(Long spid, String subproducName, String description, String productImg){
+        this.spid = spid;
+        this.subproducName = subproducName;
+        this.description = description;
+        this.productImg = productImg;
+    }
+
+    public Long getSpid() {
+        return spid;
+    }
+
+    public void setSpid(Long spid) {
+        this.spid = spid;
+    }
+
+    public String getSubproducName() {
+        return subproducName;
+    }
+
+    public void setSubproducName(String subproducName) {
+        this.subproducName = subproducName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getProductImg() {
+        return productImg;
+    }
+
+    public void setProductImg(String productImg) {
+        this.productImg = productImg;
+    }
+
+    public SubProduct getParentSubProduct() {
+        return parentSubProduct;
+    }
+
+    public void setParentSubProduct(SubProduct parentSubProduct) {
+        this.parentSubProduct = parentSubProduct;
+    }
+
+    public Set<SubProduct> getChildSubProduct() {
+        return childSubProduct;
+    }
+
+    public void setChildSubProduct(Set<SubProduct> childSubProduct) {
+        this.childSubProduct = childSubProduct;
+    }
+
+    public Long getPid() {
+        return pid;
+    }
+
+    public void setPid(Long pid) {
+        this.pid = pid;
+    }
 }

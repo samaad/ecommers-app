@@ -20,4 +20,6 @@ public class Categories {
     private Long cid;
     private String categoryName;
     private String categoryImg;
+
+
 }

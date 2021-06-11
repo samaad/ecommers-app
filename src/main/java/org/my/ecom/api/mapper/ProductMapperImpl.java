@@ -1,9 +1,7 @@
 package org.my.ecom.api.mapper;
 
-import org.my.ecom.api.modal.Person;
 import org.my.ecom.api.modal.Product;
 
-import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
