@@ -5,6 +5,7 @@ import MenuBar from "../components/Menu/MenuBar";
 import Category from "../components/layout/Category";
 import axios from "axios";
 import SubProducts from "../components/layout/SubProducts";
+import isEmpty from 'lodash/isEmpty';
 
 const App = () => {
     const [menuOptions, setmenuOptions] = useState([]);
@@ -19,13 +20,13 @@ const App = () => {
     return (
         <div>
         <Header title="Ecommerce Web app" />
-        <MenuBar key={'render'} menuOptions={menuOptions} setSelectCategory={setSelectCategory} />
+        <MenuBar key={'render'} menuOptions={menuOptions} setSelectCategory={setSubProduct} />
             {
-                !subProduct && selectCategory &&
-                <Category {...selectCategory} setSubProduct={setSubProduct}/>
+                isEmpty(subProduct) && !isEmpty(menuOptions) &&
+                <Category menuOptions={menuOptions} setSubProduct={setSubProduct}/>
             }
-            { subProduct &&
-                <SubProducts subProduct={subProduct}/>
+            { !isEmpty(subProduct) &&
+                <SubProducts product ={subProduct}/>
 
             }
     </div>

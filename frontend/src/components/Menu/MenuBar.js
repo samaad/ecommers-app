@@ -7,7 +7,10 @@ const MenuBar = ({ menuOptions, setSelectCategory }) => {
     const handleSelect = data => {
        const selectCategory =JSON.parse(data)
         console.log(selectCategory);
-        setSelectCategory(selectCategory)
+       const {
+           products
+       } = selectCategory
+        setSelectCategory(products)
     }
     return (
         <div style={menubarStyle}>

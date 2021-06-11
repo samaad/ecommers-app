@@ -1,40 +1,39 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Category = ({ products, setSubProduct }) => {
+const Category = (props) => {
 
-    const showSubProduct = (subProduct) => {
-        setSubProduct(subProduct);
+    const {
+        menuOptions,
+        setSubProduct
+    } = props
+
+    const mensCategory = menuOptions.find(option => option.gender == "Men")
+
+    const {
+        categories
+    } = mensCategory
+
+    const showSubProduct = (e, product) => {
+        e.preventDefault();
+        setSubProduct(product);
     }
 
-    const isSubProduct = products && products.subProducts && products.subProducts.length > 0;
-    // const { cid, personId, pid, productDescription, productName, productPrice, productImg, subProducts} = products;
-
-    const getContent = () => (
-        products && products.map(({ cid, personId, pid, productDescription, productName, productPrice, productImg, subProducts}) => (
-            <div key={pid} className="product" >
-                <div className="product__info">
-                    <p>{productName}</p>
-                    { subProducts ||
-                    < p className="product__price">
-                        <small>$</small>
-                        <strong>{productPrice}</strong>
-                        </p>
-                    }
+    return (
+        categories && categories.map( cat => (
+            <div className="home" onClick={e => showSubProduct(e, cat.products)}>
+                <div className="home__row">
+                    <div key={cat.cid} className="product">
+                        <div className="product__info">
+                            <p>{cat.categoryName}</p>
+                        </div>
+                        <img src={cat.categoryImg} alt=""/>
+                        <button
+                            onClick={e => showSubProduct(e, cat.products)}>show subproduct</button>
+                    </div>
                 </div>
-                <img src={productImg} alt=""/>
-                <div>{productDescription}</div>
-                <button onclick={() => showSubProduct(subProducts)}>{isSubProduct ? 'Show subProduct' :'Add to basket'}</button>
             </div>
         ))
-    )
-
-    return (
-        <div className="home">
-            <div className="home__row">
-                { products ? getContent() : <span>No Content</span> }
-            </div>
-        </div>
 
     );
 };
