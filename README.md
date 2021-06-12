@@ -138,6 +138,14 @@ Add List of products and sub products
     ]
 
 
+This delete's the product with specified product id and it corresponding sub products
+* [http://localhost:8111/ecom/api/{productId}](http://localhost:8111/ecom/api/{productId}) DELETE
+
+
+This delete's the category with specified category id and it corresponding products and sub products too
+* [http://localhost:8111/person/api/remove/category/{CategoryId}](http://localhost:8111/person/api/remove/category/{CategoryId}) DELETE
+
+
 
 
 ### Frontend Reference
