@@ -33,3 +33,10 @@ build/
 .vscode/
 
 node_modules/
+
+frontend/coverage/
+frontend/reports/
+frontend/src/components/Menu/__snapshots__/
+frontend/src/components/header/__snapshots__/
+frontend/src/components/layout/__snapshots__/
+package-lock.json
