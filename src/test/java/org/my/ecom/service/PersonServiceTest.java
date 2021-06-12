@@ -102,7 +102,7 @@ class PersonServiceTest {
         Set<Product> productset = new HashSet<>(products);
 
         List<SubProduct> subProducts = Arrays.asList(
-                new SubProduct(1l, "jackets", "jackets for all seasons", "subImage.png")
+                new SubProduct(1l, "jackets", "jackets for all seasons", "subImage.png", new BigDecimal(100.2))
         );
         when(personRepository.findAll()).thenReturn(persons);
         when(productRepository.findByCidAndPersonId(Mockito.anyLong(), Mockito.anyLong())).thenReturn(productset);
@@ -212,7 +212,7 @@ class PersonServiceTest {
         productRepository.deleteAll(Mockito.any());
 
         List<SubProduct> subProducts = Arrays.asList(
-                new SubProduct(1l, "jackets", "jackets for all seasons", "subImage.png")
+                new SubProduct(1l, "jackets", "jackets for all seasons", "subImage.png", new BigDecimal(100.2))
         );
         when(subProductReposity.findByPid(Mockito.anyLong())).thenReturn(subProducts);
 

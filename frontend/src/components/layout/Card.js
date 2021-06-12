@@ -1,16 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Card = ({ cid, personId, pid, productDescription, productName, productPrice, productImg, subProducts }) => {
+const Card = ({ cid, personId, pid, productDescription, productName, productPrice, productImg, subProducts, setSubProduct }) => {
 
 
-    const showSubProduct = (subProduct) => {
+    const showSubProduct = (e, subProduct) => {
+        e.preventDefault();
         setSubProduct(subProduct);
     }
 
     const isSubProduct = subProducts && subProducts.length > 0;
-    // const { cid, personId, pid, productDescription, productName, productPrice, productImg, subProducts} = products;
-//({ cid, personId, pid, productDescription, productName, productPrice, productImg, subProducts})
+
     const getContent = () => (
         <div key={pid} className="product" >
             <div className="product__info">
@@ -24,7 +24,7 @@ const Card = ({ cid, personId, pid, productDescription, productName, productPric
             </div>
             <img src={productImg} alt=""/>
             <div>{productDescription}</div>
-            <button onclick={() => showSubProduct(subProducts)}>{isSubProduct ? 'Show subProduct' :'Add to basket'}</button>
+            <button onClick={e => showSubProduct(e, subProducts)}>{isSubProduct ? 'Show subProduct' :'Add to basket'}</button>
         </div>
     )
 

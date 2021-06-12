@@ -1,6 +1,7 @@
 package org.my.ecom.entities;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.Set;
 
 @Entity
@@ -10,8 +11,9 @@ public class SubProduct {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long spid;
-    private String subproducName;
-    private String description;
+    private String productName;
+    private String productDescription;
+    private BigDecimal productPrice;
     private String productImg;
 
     @OneToOne
@@ -26,11 +28,12 @@ public class SubProduct {
     public SubProduct() {
     }
 
-    public SubProduct(Long spid, String subproducName, String description, String productImg){
+    public SubProduct(Long spid, String productName, String productDescription, String productImg, BigDecimal productPrice){
         this.spid = spid;
-        this.subproducName = subproducName;
-        this.description = description;
+        this.productName = productName;
+        this.productDescription = productDescription;
         this.productImg = productImg;
+        this.productPrice = productPrice;
     }
 
     public Long getSpid() {
@@ -41,20 +44,28 @@ public class SubProduct {
         this.spid = spid;
     }
 
-    public String getSubproducName() {
-        return subproducName;
+    public String getProductName() {
+        return productName;
     }
 
-    public void setSubproducName(String subproducName) {
-        this.subproducName = subproducName;
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
-    public String getDescription() {
-        return description;
+    public String getProductDescription() {
+        return productDescription;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setProductDescription(String productDescription) {
+        this.productDescription = productDescription;
+    }
+
+    public BigDecimal getProductPrice() {
+        return productPrice;
+    }
+
+    public void setProductPrice(BigDecimal productPrice) {
+        this.productPrice = productPrice;
     }
 
     public String getProductImg() {

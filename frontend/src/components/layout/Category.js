@@ -8,11 +8,11 @@ const Category = (props) => {
         setSubProduct
     } = props
 
-    const mensCategory = menuOptions.find(option => option.gender == "Men")
-
-    const {
-        categories
-    } = mensCategory
+    // const mensCategory = menuOptions.find(option => option.gender == "Men")
+    //
+    // const {
+    //     categories
+    // } = mensCategory
 
     const showSubProduct = (e, product) => {
         e.preventDefault();
@@ -20,20 +20,24 @@ const Category = (props) => {
     }
 
     return (
-        categories && categories.map( cat => (
-            <div className="home" onClick={e => showSubProduct(e, cat.products)}>
-                <div className="home__row">
-                    <div key={cat.cid} className="product">
-                        <div className="product__info">
-                            <p>{cat.categoryName}</p>
-                        </div>
-                        <img src={cat.categoryImg} alt=""/>
-                        <button
-                            onClick={e => showSubProduct(e, cat.products)}>show subproduct</button>
-                    </div>
+            <div className="home">
+                    <div className="home__row">
+                        {menuOptions && menuOptions.map(person => (
+                            person && person.categories.map(cat => (
+                                <div key={cat.cid} className="product">
+                                    <div className="product__info">
+                                        <p>{person.gender + "  " + cat.categoryName}</p>
+                                    </div>
+                                    <img src={cat.categoryImg} alt=""/>
+                                    <button
+                                        onClick={e => showSubProduct(e, cat.products)}>show subproduct
+                                    </button>
+                                </div>
+                            ))
+                        ))}
                 </div>
             </div>
-        ))
+
 
     );
 };

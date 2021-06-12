@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -12,6 +14,8 @@ import lombok.NoArgsConstructor;
 public class SubProduct {
 
     private Long spid;
-    private String subproducName;
+    private String productName;
+    private String productDescription;
+    private BigDecimal productPrice;
     private String productImg;
 }

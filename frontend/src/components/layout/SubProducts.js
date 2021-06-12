@@ -6,18 +6,22 @@ const SubProducts = (props) => {
 
     console.log(props);
     const {
-        product = {}
+        product = {},
+        setSubProduct
     } = props
     const showSubProduct = () => {
 
     }
 
-    const getContent = () => {
-        return product && product.map(prod => (
-            <Card {...prod} />
-        ))
-    }
-
+    const getContent = () => (
+        <div className="home">
+            <div className="home__row">
+                {product && product.map(prod => (
+                    <Card key={prod.pid} {...prod} setSubProduct={setSubProduct}/>
+                ))}
+            </div>
+        </div>
+    )
 
     return (
         <>

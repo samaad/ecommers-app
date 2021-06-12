@@ -24,7 +24,7 @@ const MenuItem = ({ id, gender, categories }) => {
             <NavDropdown title={gender} id="nav-dropdown">
                 {
                     categories && categories.map(items => (
-                        <NavDropdown.Item eventKey="4.1">{items.categoryName}</NavDropdown.Item>
+                        <NavDropdown.Item key={items.cid} eventKey="4.1">{items.categoryName}</NavDropdown.Item>
                     ))
                 }
 

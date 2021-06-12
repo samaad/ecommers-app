@@ -9,8 +9,8 @@ import isEmpty from 'lodash/isEmpty';
 
 const App = () => {
     const [menuOptions, setmenuOptions] = useState([]);
-    const [selectCategory, setSelectCategory] = useState({});
     const [subProduct, setSubProduct] = useState({});
+
     useEffect(() => {
         axios.get("/person/api").then((response) => {
             setmenuOptions(response.data);
@@ -26,7 +26,7 @@ const App = () => {
                 <Category menuOptions={menuOptions} setSubProduct={setSubProduct}/>
             }
             { !isEmpty(subProduct) &&
-                <SubProducts product ={subProduct}/>
+                <SubProducts product ={subProduct} setSubProduct={setSubProduct}/>
 
             }
     </div>

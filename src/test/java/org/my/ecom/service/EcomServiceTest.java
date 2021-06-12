@@ -62,7 +62,7 @@ class EcomServiceTest {
     void saveProductWithSubproduct() {
 
         List<SubProduct> subProduct = Arrays.asList(
-                new SubProduct(1l, "Jogging shoe", "good for running", "http://runningimage.png")
+                new SubProduct(1l, "Jogging shoe", "good for running", "http://runningimage.png", new BigDecimal(100.2))
         );
         Set<SubProduct> subProducts = new HashSet<>(subProduct);
         Product product = Product.builder()
@@ -98,15 +98,15 @@ class EcomServiceTest {
     @Test
     void saveProductWithSubproductAndChildSubProduct() {
 
-        SubProduct subProduct1 = new SubProduct(1l, "casual shoe", "new to brand", "http://runningimage.png");
-        SubProduct subProduct2 = new SubProduct(1l, "canvas", "stylies", "http://runningimage.png");
+        SubProduct subProduct1 = new SubProduct(1l, "casual shoe", "new to brand", "http://runningimage.png", new BigDecimal(100.2));
+        SubProduct subProduct2 = new SubProduct(1l, "canvas", "stylies", "http://runningimage.png", new BigDecimal(100.2));
         subProduct2.setParentSubProduct(subProduct1);
         subProduct1.setParentSubProduct(subProduct1);
         List<SubProduct> childSubProduct = Arrays.asList(subProduct2);
         subProduct1.setChildSubProduct(new HashSet<>(childSubProduct));
 
         List<SubProduct> subProduct = Arrays.asList(
-                new SubProduct(1l, "Jogging shoe", "good for running", "http://runningimage.png"),
+                new SubProduct(1l, "Jogging shoe", "good for running", "http://runningimage.png", new BigDecimal(100.2)),
                 subProduct1
         );
         Set<SubProduct> subProducts = new HashSet<>(subProduct);
@@ -178,7 +178,7 @@ class EcomServiceTest {
                 .pid(1l)
                 .personId(2l)
                 .cid(1l)
-                .productDescription("Sprots Brand")
+                .productDescription("Sports Brand")
                 .productImg("http://addidas.img")
                 .productName("Addidas")
                 .productPrice(new BigDecimal(123.55))
@@ -197,7 +197,7 @@ class EcomServiceTest {
                 .pid(1l)
                 .personId(2l)
                 .cid(1l)
-                .productDescription("Sprots Brand")
+                .productDescription("Sports Brand")
                 .productImg("http://addidas.img")
                 .productName("Addidas")
                 .productPrice(new BigDecimal(123.55))
@@ -218,7 +218,7 @@ class EcomServiceTest {
     @Test
     void removeProduct() {
         List<SubProduct> subProduct = Arrays.asList(
-                new SubProduct(1l, "Jogging shoe", "good for running", "http://runningimage.png")
+                new SubProduct(1l, "Jogging shoe", "good for running", "http://runningimage.png", new BigDecimal(100.2))
         );
         org.my.ecom.entities.Product endtProduct = org.my.ecom.entities.Product.builder()
                 .pid(1l)
